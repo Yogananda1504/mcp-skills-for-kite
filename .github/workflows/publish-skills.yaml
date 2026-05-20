@@ -37,6 +37,7 @@ jobs:
             docker run --rm \
               -e REGISTRY=${{ env.REGISTRY }} \
               -e NAMESPACE=$namespace \
+              -e INPUT_REPOSITORY=${{ github.event.repository.name }} \
               -e INPUT_REGISTRY=${{ env.REGISTRY }} \
               -e INPUT_USERNAME=${{ github.actor }} \
               -e INPUT_PASSWORD=${{ secrets.GITHUB_TOKEN }} \
@@ -46,5 +47,5 @@ jobs:
               -v "${{ github.workspace }}":/github/workspace \
               -w /github/workspace \
               ghcr.io/andrewhowdencom/skr:latest \
-              skr batch publish skills --registry ${{ env.REGISTRY }} --namespace $namespace --path skills/$skill_name
+              skr batch publish skills --registry ${{ env.REGISTRY }} --namespace $namespace --repository ${{ github.event.repository.name }} --path skills/$skill_name
           done
