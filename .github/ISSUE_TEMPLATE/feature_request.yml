@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest a new skill, workflow improvement, or documentation update.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "Describe the change you want and why it would help the repository."
+  - type: textarea
+    id: request
+    attributes:
+      label: Request
+      description: What would you like to add or change?
+      placeholder: Describe the feature or improvement.
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Benefit
+      description: Why is this useful?
+      placeholder: Explain the value or problem it solves.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Suggested implementation
+      description: Optional: share any ideas for how this could be implemented.
