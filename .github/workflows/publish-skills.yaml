@@ -23,26 +23,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Determine publish base
-        id: base
-        shell: bash
-        run: |
-          if [ "${{ github.event_name }}" = "push" ] && [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
-            echo "sha=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "sha=$(git rev-list --max-parents=0 HEAD)" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Publish Skills
         shell: bash
         run: |
           namespace="${{ env.NAMESPACE }}"
           namespace="${namespace,,}"
-          base_arg=""
-
-          if [ "${{ github.event_name }}" = "push" ]; then
-            base_arg="--base ${{ steps.base.outputs.sha }}"
-          fi
 
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
@@ -57,10 +42,9 @@ jobs:
               -e INPUT_PASSWORD=${{ secrets.GITHUB_TOKEN }} \
               -e INPUT_NAMESPACE=$namespace \
               -e INPUT_PATH=skills/$skill_name \
-              -e INPUT_BASE=${{ steps.base.outputs.sha }} \
               -v "/var/run/docker.sock":"/var/run/docker.sock" \
               -v "${{ github.workspace }}":/github/workspace \
               -w /github/workspace \
               ghcr.io/andrewhowdencom/skr:latest \
-              skr batch publish skills --registry ${{ env.REGISTRY }} --namespace $namespace --path skills/$skill_name $base_arg
+              skr batch publish skills --registry ${{ env.REGISTRY }} --namespace $namespace --path skills/$skill_name
           done
