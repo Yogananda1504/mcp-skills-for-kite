@@ -1,0 +1,37 @@
+{
+  "name": "mcp-skills-extension",
+  "displayName": "MCP Skills",
+  "publisher": "Yogananda1504",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:mcpSkills.list",
+    "onCommand:mcpSkills.install"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcpSkills.list",
+        "title": "MCP: List Skills"
+      },
+      {
+        "command": "mcpSkills.install",
+        "title": "MCP: Install Skill"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p .",
+    "watch": "tsc -w -p ."
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0"
+  }
+}
