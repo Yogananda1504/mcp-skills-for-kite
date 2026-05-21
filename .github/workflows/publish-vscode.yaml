@@ -38,5 +38,10 @@ jobs:
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         run: |
-          npx --yes @vscode/vsce publish --pat $VSCE_PAT
+          if [ -z "$VSCE_PAT" ]; then
+            echo "VSCE_PAT secret is not set"
+            exit 1
+          fi
+
+          npx --yes @vscode/vsce publish --pat "$VSCE_PAT"
         working-directory: vscode-extension
