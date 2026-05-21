@@ -43,6 +43,14 @@ The `skills/` tree is the canonical source for publishing.
 
 ---
 
+## Plugin bundle (discovery)
+
+This repository includes a plugin manifest at `plugin.json` (root) describing a bundle of agent skills. Some plugin marketplaces scan the repository root for `plugin.json` so a root-level manifest is provided to improve discoverability. The canonical skill sources remain under `skills/`.
+
+If a marketplace still reports "No plugins found", try pointing the marketplace to this repository root or open an issue with the marketplace explaining the expected manifest fields.
+
+---
+
 ## Open Source
 
 This repository is intended to be easy to consume, audit, and contribute to.

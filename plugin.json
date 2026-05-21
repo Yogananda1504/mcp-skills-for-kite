@@ -1,0 +1,11 @@
+{
+  "name": "stock-skills-plugin",
+  "displayName": "Stock Skills Plugin",
+  "version": "0.0.1",
+  "publisher": "yogananda1504",
+  "description": "Bundle of MCP/agent skills packaged for agent marketplaces and Copilot Agent Customizations.",
+  "skillsPath": "skills",
+  "labels": {
+    "type": "mcp-skills-plugin"
+  }
+}
