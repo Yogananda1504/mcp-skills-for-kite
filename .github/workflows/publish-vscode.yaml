@@ -29,6 +29,11 @@ jobs:
         run: npm run build
         working-directory: vscode-extension
 
+      - name: Package extension
+        run: |
+          npx --yes vsce package --out ../mcp-skills-extension.vsix
+        working-directory: vscode-extension
+
       - name: Publish to Visual Studio Marketplace
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
