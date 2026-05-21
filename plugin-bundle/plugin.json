@@ -1,0 +1,11 @@
+{
+  "name": "stock-skills-plugin",
+  "displayName": "Stock Skills Plugin",
+  "version": "0.0.1",
+  "publisher": "Yogananda1504",
+  "description": "Bundle of MCP/agent skills packaged for the Agent Customizations plugins list.",
+  "skillsPath": "skills",
+  "labels": {
+    "type": "mcp-skills-plugin"
+  }
+}
