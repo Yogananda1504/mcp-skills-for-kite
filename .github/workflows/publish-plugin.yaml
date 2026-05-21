@@ -30,6 +30,14 @@ jobs:
           mkdir -p plugin-bundle/skills
           cp -r skills/* plugin-bundle/skills/ || true
 
+      - name: Copy root plugin manifest into bundle
+        run: |
+          if [ -f plugin.json ]; then
+            cp plugin.json plugin-bundle/plugin.json
+          else
+            echo "No root plugin.json found; skipping copy"
+          fi
+
       - name: Log in to GHCR
         uses: docker/login-action@v2
         with:
