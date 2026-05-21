@@ -43,8 +43,8 @@ jobs:
           context: ./plugin-bundle
           push: true
           tags: |
-            ghcr.io/Yogananda1504/mcp-skills-plugin:latest
-            ghcr.io/Yogananda1504/mcp-skills-plugin:${{ github.sha }}
+            ghcr.io/yogananda1504/mcp-skills-plugin:latest
+            ghcr.io/yogananda1504/mcp-skills-plugin:${{ github.sha }}
 
       - name: Output published location
-        run: echo "Published to ghcr.io/Yogananda1504/mcp-skills-plugin:latest"
+        run: echo "Published to ghcr.io/yogananda1504/mcp-skills-plugin:latest"
